@@ -1,0 +1,6 @@
+public Polynomail(File f) throws IOException {
+	BufferedReader br = new BufferedReader(new Filereader(f);
+	string line = br.readLine();
+	line=line.replace("-", "~-");
+	String[] terms = line.split("~");
+}
