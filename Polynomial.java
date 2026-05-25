@@ -12,25 +12,25 @@ public class Polynomial {
     public Polynomial add(Polynomial p) {
         int calling_length = this.coefficients.length;
         int arg_length = this.coefficients.length;
-        longer = calling_length;
+        int longer = calling_length;
 	if (arg_length > calling_length) {
-		longer = arg_length
+		longer = arg_length;
 	}
 	
 	double[] coeff = new double[longer];
 	for (int i = 0; i < longer; i++) {
 		double a = 0.0;
 		try {
-			a = calling_length[i] 
-		} catch {
-			a = 0.0
+			a = calling_length[i]; 
+		} catch(Execption e)  {
+			a = 0.0;
 		}
 		double b = 0.0;
 		try {
-			b = arg_length[i]
+			b = arg_length[i];
 		}
-		catch {
-			b = 0.0
+		catch(Execption e)  {
+			b = 0.0;
 		}
 		coeff[i] = a + b;
 	}
@@ -39,7 +39,15 @@ public class Polynomial {
     }
 
     public double evaluate(double num) {
-        return 0.0;
+        double result = 0.0;
+        for(int i = 0; i < this.coefficients.length; i++) {
+            double term = this.coefficients[i];
+            for (int j = 0; j < i; j++) {
+                term*=num;
+            }
+            result+=term;
+        } 
+        return result;
     }
 
     public boolean hasRoot(double num) {
