@@ -11,7 +11,7 @@ public class Polynomial {
 
     public Polynomial add(Polynomial p) {
         int calling_length = this.coefficients.length;
-        int arg_length = this.coefficients.length;
+        int arg_length = p.coefficients.length;
         int longer = calling_length;
 	if (arg_length > calling_length) {
 		longer = arg_length;
@@ -20,18 +20,13 @@ public class Polynomial {
 	double[] coeff = new double[longer];
 	for (int i = 0; i < longer; i++) {
 		double a = 0.0;
-		try {
-			a = calling_length[i]; 
-		} catch(Execption e)  {
-			a = 0.0;
-		}
-		double b = 0.0;
-		try {
-			b = arg_length[i];
-		}
-		catch(Execption e)  {
-			b = 0.0;
-		}
+        double b = 0.0;
+        if (i < this.coefficients.length) {
+            a = this.coefficients[i];
+        }
+        if (i < p.coefficients.length) {
+            b = p.coefficients[i];
+        }
 		coeff[i] = a + b;
 	}
 	Polynomial result = new Polynomial(coeff);
